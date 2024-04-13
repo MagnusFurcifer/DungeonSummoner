@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://gea44vryelm7"]
+
+[ext_resource type="Script" path="res://world_space/world/world.gd" id="1_l60ie"]
+[ext_resource type="PackedScene" uid="uid://dg1rxvgwp6rlp" path="res://player_controller/player_controller.tscn" id="2_vqpvf"]
+
+[sub_resource type="Environment" id="Environment_or4ph"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.25
+fog_sky_affect = 0.0
+
+[node name="world_space" type="Node3D"]
+script = ExtResource("1_l60ie")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_or4ph")
+
+[node name="player_controller" parent="." instance=ExtResource("2_vqpvf")]

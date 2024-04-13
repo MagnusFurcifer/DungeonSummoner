@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://jc2jjmorlytc"]
+
+[ext_resource type="Script" path="res://ui_systems/intro_sting.gd" id="1_01tcn"]
+[ext_resource type="FontFile" uid="uid://c5yyu0axuj3vo" path="res://assets/fonts/Jersey20-Regular.ttf" id="2_moq46"]
+[ext_resource type="AudioStream" uid="uid://ceqoujnjbi2o2" path="res://ui_systems/assets/intro_sting_sound.wav" id="3_03m0k"]
+
+[node name="intro_sting" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_01tcn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_moq46")
+theme_override_font_sizes/font_size = 64
+text = "RETREIVE COMPONENTS!"
+
+[node name="sting" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_03m0k")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

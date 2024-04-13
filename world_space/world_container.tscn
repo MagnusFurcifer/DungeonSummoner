@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx61c17kryit2"]
+
+[ext_resource type="Script" path="res://world_space/world_container.gd" id="1_527wl"]
+[ext_resource type="PackedScene" uid="uid://gea44vryelm7" path="res://world_space/world/world.tscn" id="2_xtfyr"]
+
+[node name="world_container" type="SubViewportContainer"]
+offset_right = 320.0
+offset_bottom = 240.0
+scale = Vector2(2, 2)
+script = ExtResource("1_527wl")
+
+[node name="world_viewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(320, 240)
+render_target_update_mode = 4
+
+[node name="world" parent="world_viewport" instance=ExtResource("2_xtfyr")]

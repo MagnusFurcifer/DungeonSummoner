@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8lu113aswpjl"]
+
+[ext_resource type="Script" path="res://screens/game_screen/game_screen.gd" id="1_kutnb"]
+[ext_resource type="PackedScene" uid="uid://bx61c17kryit2" path="res://world_space/world_container.tscn" id="2_bdftc"]
+[ext_resource type="Script" path="res://screens/game_screen/cards.gd" id="3_kh0ix"]
+[ext_resource type="PackedScene" uid="uid://jc2jjmorlytc" path="res://ui_systems/intro_sting.tscn" id="4_v2mnk"]
+
+[node name="game_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kutnb")
+
+[node name="world_container" parent="." instance=ExtResource("2_bdftc")]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+
+[node name="cards" type="Node2D" parent="."]
+position = Vector2(315, 462)
+script = ExtResource("3_kh0ix")
+
+[node name="card_0" type="Node2D" parent="cards"]
+position = Vector2(-84, 0)
+rotation = -0.211756
+
+[node name="card_1" type="Node2D" parent="cards"]
+
+[node name="card_2" type="Node2D" parent="cards"]
+position = Vector2(91, 4)
+rotation = 0.163614
+scale = Vector2(1, 1)
+
+[node name="discard" type="Node2D" parent="cards"]
+
+[node name="card_use_delay" type="Timer" parent="cards"]
+wait_time = 2.0
+one_shot = true
+
+[node name="intro_sting" parent="." instance=ExtResource("4_v2mnk")]
+layout_mode = 1
+
+[node name="start_timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="cards/card_use_delay" to="cards" method="_on_card_use_delay_timeout"]
+[connection signal="intro_finished" from="intro_sting" to="." method="_on_intro_sting_intro_finished"]
+[connection signal="timeout" from="start_timer" to="." method="_on_start_timer_timeout"]

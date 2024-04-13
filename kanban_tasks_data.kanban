@@ -1,0 +1,50 @@
+{
+	"categories": [
+		{
+			"uuid": "e103634f-e4e0-4e74-9016-3ec9b06cf29b",
+			"title": "Task",
+			"color": "70bafa"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "07af81f5-bbfe-49da-a33b-a27d0f15fbe0",
+			"title": "Todo",
+			"tasks": [
+				"bfb98a72-2ef0-4a1f-8c38-cde7d28ab9d5"
+			]
+		},
+		{
+			"uuid": "5c498cd4-5206-42f4-9a18-464063276ac1",
+			"title": "Doing",
+			"tasks": []
+		},
+		{
+			"uuid": "c97ca114-29d9-4ba8-a390-6aee213e0911",
+			"title": "Done",
+			"tasks": []
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "bfb98a72-2ef0-4a1f-8c38-cde7d28ab9d5",
+			"title": "FootStep Sounds",
+			"description": "eJxjYpDRSJBkYD_js7uNAQjWMx61Y2DQYWBjZGX8X__fnsHIGCTcUH_GB5WeEYldPE0NQjOsYzcynsjA8IYl1Awi8j0TQrN8T4YwrgdBlXqmTvkCYlSlQQSuyIr8B9GzpNjBdKbYQV4QLQ91y38IlIe4gW4AAEP_NQI.\n",
+			"category": "e103634f-e4e0-4e74-9016-3ec9b06cf29b",
+			"steps": []
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"07af81f5-bbfe-49da-a33b-a27d0f15fbe0"
+			],
+			[
+				"5c498cd4-5206-42f4-9a18-464063276ac1"
+			],
+			[
+				"c97ca114-29d9-4ba8-a390-6aee213e0911"
+			]
+		]
+	}
+}

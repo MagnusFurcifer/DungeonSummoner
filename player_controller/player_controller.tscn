@@ -1,0 +1,115 @@
+[gd_scene load_steps=12 format=3 uid="uid://dg1rxvgwp6rlp"]
+
+[ext_resource type="Script" path="res://player_controller/player_controller.gd" id="1_wbivu"]
+[ext_resource type="Script" path="res://player_controller/systems/movement_system.gd" id="3_lvced"]
+[ext_resource type="Script" path="res://player_controller/systems/movement_system_footsteps.gd" id="4_cjh0q"]
+[ext_resource type="Script" path="res://player_controller/systems/camera_system.gd" id="5_7r01t"]
+[ext_resource type="Script" path="res://player_controller/systems/camera_system_first_person_cam.gd" id="6_my6mh"]
+[ext_resource type="Shader" path="res://player_controller/assets/shaders/vhs.gdshader" id="7_2tnud"]
+[ext_resource type="Script" path="res://player_controller/systems/state_system.gd" id="7_5qyio"]
+[ext_resource type="Shader" path="res://player_controller/assets/shaders/dithering.gdshader" id="7_ms08p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bc7cu"]
+size = Vector3(2, 3, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y4qsk"]
+shader = ExtResource("7_2tnud")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(128, 128)
+shader_parameter/pixelate = true
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 0.1
+shader_parameter/distort_intensity = 0.0
+shader_parameter/noise_opacity = 0.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.0
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ktwcy"]
+shader = ExtResource("7_ms08p")
+shader_parameter/alpha_adj = 0.0
+
+[node name="player_controller" type="CharacterBody3D"]
+collision_layer = 7
+collision_mask = 3
+script = ExtResource("1_wbivu")
+
+[node name="action_sfx" type="Node" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_bc7cu")
+
+[node name="systems" type="Node3D" parent="."]
+
+[node name="state_system" type="Node3D" parent="systems"]
+script = ExtResource("7_5qyio")
+
+[node name="movement" type="Node3D" parent="systems"]
+script = ExtResource("3_lvced")
+
+[node name="movement_ray" type="RayCast3D" parent="systems/movement"]
+target_position = Vector3(0, 0, 1.5)
+collision_mask = 11
+
+[node name="wall_area_ray" type="RayCast3D" parent="systems/movement"]
+target_position = Vector3(0, 0, 1.5)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="footsteps_system" type="Node3D" parent="systems/movement"]
+visible = false
+script = ExtResource("4_cjh0q")
+
+[node name="footstep_delay" type="Timer" parent="systems/movement/footsteps_system"]
+wait_time = 0.4
+one_shot = true
+
+[node name="footstep_player" type="AudioStreamPlayer" parent="systems/movement/footsteps_system"]
+
+[node name="camera_system" type="Node3D" parent="systems"]
+script = ExtResource("5_7r01t")
+
+[node name="first_person_cam" type="Camera3D" parent="systems/camera_system"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.7, -1)
+fov = 90.0
+script = ExtResource("6_my6mh")
+
+[node name="interact_ray" type="RayCast3D" parent="systems/camera_system/first_person_cam"]
+target_position = Vector3(0, 0, -4)
+collision_mask = 8
+
+[node name="Control" type="Control" parent="systems/camera_system/first_person_cam"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="ColorRect" parent="systems/camera_system/first_person_cam/Control"]
+visible = false
+material = SubResource("ShaderMaterial_y4qsk")
+layout_mode = 0
+offset_left = -102.0
+offset_top = -102.0
+offset_right = 1178.0
+offset_bottom = 618.0
+
+[node name="dithering_filter" type="ColorRect" parent="systems/camera_system/first_person_cam/Control"]
+visible = false
+material = SubResource("ShaderMaterial_ktwcy")
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="debug_free_cam" type="Camera3D" parent="systems/camera_system"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.7, 0)

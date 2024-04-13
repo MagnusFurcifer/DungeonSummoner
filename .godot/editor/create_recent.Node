@@ -1,2 +1,15 @@
-SubViewportContainer
-SubViewport
+CollisionShape3D
+AnimatedSprite3D
+CharacterBody3D
+Node3D
+Control
+TextureRect
+VBoxContainer
+Label
+ColorRect
+Timer
+AudioStreamPlayer
+Node2D
+AnimationPlayer
+GPUParticles2D
+Sprite2D
