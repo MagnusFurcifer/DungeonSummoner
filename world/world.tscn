@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://43uquxrvq1y6"]
+
+[ext_resource type="Script" path="res://world/world.gd" id="1_d8ytj"]
+
+[node name="SubViewportContainer" type="SubViewportContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_d8ytj")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="world" type="Node3D" parent="SubViewport"]
