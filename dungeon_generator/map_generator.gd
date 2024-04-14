@@ -5,11 +5,11 @@ class_name MapGenerator
 var level = []
 var rooms = []
 
-const ROOM_MAX_SIZE = 4
-const ROOM_MIN_SIZE = 2
+const ROOM_MAX_SIZE = 5
+const ROOM_MIN_SIZE = 4
 const MAX_ROOMS = 6
 const MIN_ROOMS = 4
-const MAX_TRIES = 100
+const MAX_TRIES = 1000
 var num_rooms = 0
 
 var min_entities = 5
@@ -151,10 +151,11 @@ func generation_attempt(tries, size):
 			
 			if num_rooms == 0:
 				create_room(room_def, 0)
-				spawn.x = room_def['x'] + floor( room_def['w'] / 2 )
-				spawn.y = room_def['y'] + floor( room_def['h'] / 2 )
-				couldron.x = room_def['x'] + floor(room_def['w'] / 2 - 1)
-				couldron.y = room_def['y'] + floor(room_def['h'] / 2 - 1)
+				
+				couldron.x = room_def['x'] + floor( room_def['w'] / 2 )
+				couldron.y = room_def['y'] + floor( room_def['h'] / 2 )
+				spawn.x = couldron.x + 1
+				spawn.y = couldron.y
 				
 				
 			else:

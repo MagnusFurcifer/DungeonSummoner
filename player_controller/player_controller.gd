@@ -6,6 +6,8 @@ class_name PlayerController
 	"cam" : $systems/camera_system, ## Literally just a camera with a few extra things
 	}
 
+
+
 const CELL_SIZE = 2
 
 var visited_cells = []
@@ -53,6 +55,10 @@ func _input(event):
 			systems.cam.input(event)
 		
 		
+func heal(amount):
+	current_hp += amount
+	if current_hp >= max_hp:
+		current_hp = max_hp
 		
 func has_all_collectables():
 	var has_all = true
@@ -68,6 +74,7 @@ func hit(dmg):
 	print("HIT PLAYER")
 	systems.cam.cam_shake()
 	current_hp -= dmg
+	$action_sfx/hit_audio.play()
 
 func is_entity_in_front_cell():
 	return systems.cam.cast_interact_ray()

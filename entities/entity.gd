@@ -19,7 +19,7 @@ func _ready():
 	action_timer.start()
 	anim.play("idle")
 
-func hit(dmg):
+func hit(dmg_type):
 	if current_state in [STATES.IDLE, STATES.ACTING]:
 		anim.play("hit")
 	
@@ -36,6 +36,7 @@ func get_current_tile():
 	
 	
 func get_player_dir():
+	print("Getting Player Dir")
 	var dir = Vector2(0, 0)
 	if GameManager.player:
 		var ec = get_current_tile()
@@ -52,14 +53,14 @@ func get_player_dir():
 				dir.y = 1
 			else:
 				dir.y = -1
+				
+	print("Player Dir: " + str(dir))
 	return dir
 	
 func is_player_adjacent():
 	if GameManager.player:
 		var ec = get_current_tile()
-		#print("Entitiy Tile: " + str(ec))
 		var pc = GameManager.player.get_current_tile()
-		#print("Player Tile: " + str(pc))
 		var x_diff = abs(pc.x-ec.x)
 		var y_diff = abs(pc.y-ec.y)
 		if x_diff <= 1 and y_diff <= 1:

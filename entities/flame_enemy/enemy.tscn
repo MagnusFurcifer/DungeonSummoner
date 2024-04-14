@@ -91,7 +91,7 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_gq6h4"]
 size = Vector3(2, 3, 2)
 
-[node name="enemy" type="CharacterBody3D"]
+[node name="flame_enemy" type="CharacterBody3D"]
 collision_layer = 9
 script = ExtResource("1_s2lk5")
 
@@ -105,3 +105,4 @@ animation = &"idle"
 shape = SubResource("BoxShape3D_gq6h4")
 
 [node name="action_timer" type="Timer" parent="."]
+wait_time = 1.5

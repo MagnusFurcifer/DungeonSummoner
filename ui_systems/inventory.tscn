@@ -1,0 +1,93 @@
+[gd_scene load_steps=11 format=3 uid="uid://dolo45jjkrgjc"]
+
+[ext_resource type="Script" path="res://ui_systems/inventory.gd" id="1_7sh1a"]
+[ext_resource type="Texture2D" uid="uid://ldbmo4krding" path="res://entities/collectable_tomato/ui_sprite1.png" id="2_ct6k5"]
+[ext_resource type="Texture2D" uid="uid://2iodvuqb206c" path="res://entities/collectable_tomato/ui_sprite2.png" id="3_gfmp0"]
+[ext_resource type="Texture2D" uid="uid://dds3qcgmbtj0h" path="res://entities/collectable_tongue/ui_sprite2.png" id="4_a5fer"]
+[ext_resource type="Texture2D" uid="uid://dp7s1nlm32yl6" path="res://entities/collectable_tongue/ui_sprite1.png" id="5_omsc6"]
+[ext_resource type="Texture2D" uid="uid://cbdg3kpycbih5" path="res://entities/collectable_bonedust/ui_sprite2.png" id="6_iv24p"]
+[ext_resource type="Texture2D" uid="uid://c8vm7qid5qcub" path="res://entities/collectable_bonedust/ui_sprite.png" id="7_pj0fh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uqg0m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ct6k5")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gfmp0")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_as46d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_a5fer")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_omsc6")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_coreh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_iv24p")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_pj0fh")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}]
+
+[node name="inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_7sh1a")
+
+[node name="ui_sprites" type="Node2D" parent="."]
+position = Vector2(176, 31)
+
+[node name="collectable_0" type="AnimatedSprite2D" parent="ui_sprites"]
+sprite_frames = SubResource("SpriteFrames_uqg0m")
+animation = &"empty"
+
+[node name="collectable_1" type="AnimatedSprite2D" parent="ui_sprites"]
+position = Vector2(128, 0)
+sprite_frames = SubResource("SpriteFrames_as46d")
+animation = &"empty"
+
+[node name="collectable_2" type="AnimatedSprite2D" parent="ui_sprites"]
+position = Vector2(256, 8)
+sprite_frames = SubResource("SpriteFrames_coreh")
+animation = &"empty"

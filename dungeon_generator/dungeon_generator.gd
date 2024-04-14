@@ -1,7 +1,7 @@
 extends Node
 class_name DungeonGenerator
 
-const MAP_SIZE = Vector2(16, 16)
+const MAP_SIZE = Vector2(24, 24)
 
 enum CELL_TYPES {
 	BLANK,
@@ -17,7 +17,7 @@ var map = MapGenerator.new()
 var rooms = []
 var meshes = []
 var entities = []
-var player_spawn = Vector2(12, 12)
+var player_spawn = Vector2(0, 0)
 
 
 @export var room_min_size : Vector2 = Vector2(2, 2)

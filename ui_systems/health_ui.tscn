@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://br8nlv6kte6ci"]
+[gd_scene load_steps=5 format=3 uid="uid://br8nlv6kte6ci"]
 
 [ext_resource type="Script" path="res://ui_systems/health_ui.gd" id="1_mu2ca"]
+[ext_resource type="FontFile" uid="uid://c5yyu0axuj3vo" path="res://assets/fonts/Jersey20-Regular.ttf" id="2_7h3xx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5t6q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dh10f"]
+bg_color = Color(0, 1, 0.290196, 1)
 
 [node name="health_ui" type="Control"]
 layout_mode = 3
@@ -24,5 +30,21 @@ offset_right = 103.0
 offset_bottom = 51.0
 grow_horizontal = 0
 rotation = 1.5708
+theme_override_styles/background = SubResource("StyleBoxFlat_i5t6q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dh10f")
 value = 100.0
 show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 571.0
+offset_top = 167.0
+offset_right = 628.0
+offset_bottom = 192.0
+rotation = -0.326985
+theme_override_colors/font_color = Color(0, 1, 0.290196, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_7h3xx")
+theme_override_font_sizes/font_size = 24
+text = "Health"

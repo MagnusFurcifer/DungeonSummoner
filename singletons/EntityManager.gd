@@ -5,8 +5,7 @@ var couldron_scene = preload("res://entities/couldron/couldron.tscn")
 
 var entity_scenes = [
 	preload("res://entities/flame_enemy/enemy.tscn"),
-	preload("res://entities/flame_enemy/enemy.tscn"),
-	preload("res://entities/flame_enemy/enemy.tscn"),
+	preload("res://entities/water_enemy/enemy.tscn"),
 ]
 
 

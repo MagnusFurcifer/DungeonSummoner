@@ -22,7 +22,11 @@ signal card_activated
 var card_details = {
 	"image" : null,
 	"title" : "Fire Demon",
-	"description" : "Summon a Flame"
+	"description" : "Summon a Flame",
+	"damage_type" : 0,
+	"card_type" : 0,
+	"healing_value" : 5,
+	"color" : Color.WHITE,
 }
 
 func activate():
@@ -31,12 +35,16 @@ func activate():
 	$card_control.visible = false
 	$card_control.queue_free()
 	
-	if GameManager.player:
-		var res = GameManager.player.is_entity_in_front_cell()
-		print(res)
-		if res:
-			if res is Entity:
-				res.hit(11)
+	if card_details.card_type == 0:
+		if GameManager.player:
+			var res = GameManager.player.is_entity_in_front_cell()
+			print(res)
+			if res:
+				if res is Entity:
+					res.hit(card_details.damage_type)
+	else:
+		if GameManager.player:
+			GameManager.player.heal(card_details.healing_value)
 	
 func init(pos, delay, cards_manager, is_card_delay_active):
 	if is_card_delay_active: 
@@ -56,6 +64,7 @@ func init(pos, delay, cards_manager, is_card_delay_active):
 		$card_sprite/card_image.texture = card_details.image
 	$card_sprite/card_text/card_title.text = card_details.title
 	$card_sprite/card_text/card_details.text = card_details.description
+	
 	
 	
 func _on_card_delay_start():
@@ -99,6 +108,7 @@ func _on_card_control_gui_input(event):
 func _on_animation_player_animation_finished(anim_name):
 	print("animation_finioshed on card: " + str(anim_name))
 	if anim_name == "activate":
+		activate_emitter.process_material.color = card_details.color
 		activate_emitter.emitting = true
 		$activate_sound.stream = activate_sounds[randi() % activate_sounds.size()]
 		$activate_sound.play()

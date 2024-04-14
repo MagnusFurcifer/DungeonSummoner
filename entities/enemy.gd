@@ -1,14 +1,19 @@
 extends Entity
 class_name Enemy
 
+const dmg_label = preload("res://entities/damage_label.tscn")
+
 var current_hp = 10
 var max_hp = 10
 
+func hit(dmg_type):
+	super(dmg_type)
 
-func hit(dmg):
-	super(dmg)
-	if current_state in [STATES.IDLE, STATES.ACTING]:
-		current_hp -= dmg
+
+func show_damage(dmg):
+	var tmp = dmg_label.instantiate()
+	add_child(tmp)
+	tmp.trigger("-" + str(dmg))
 
 func _process(delta):
 	if current_state in [STATES.IDLE, STATES.ACTING]:
@@ -27,9 +32,18 @@ func _on_action_timer_finished():
 			if res:
 				#print("FOUND PLAYER IN RAY")
 				if res.collider is PlayerController:
-					if !is_player_adjacent():
-						move_towards_player()
+					var target_path = find_path_to_player()
+					if target_path:
+						target_path.pop_front()
+						if !is_player_adjacent():
+							move_towards_player(target_path)
 			
+			
+func find_path_to_player():
+	if GameManager.player and GameManager.world:
+		var path = GameManager.world.astar_grid.get_id_path(get_current_tile(), GameManager.player.get_current_tile())
+		return path
+
 			
 func attack_player():
 	#print("ATTACK PLAYER")
@@ -37,9 +51,10 @@ func attack_player():
 	if GameManager.player:
 		GameManager.player.hit(1)
 			
-func move_towards_player():
-	#print("MOVING TOWARDS PLAYER")
+func move_towards_player(target_path):
+	print("MOVING TOWARDS PLAYER")
 	var target_dir = get_player_dir()
+	
 	var tgt_pos = Vector3(target_dir.x, 0, target_dir.y)
 	self.global_position += tgt_pos
 		

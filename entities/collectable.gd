@@ -1,9 +1,10 @@
 extends Area3D
 class_name Collectable
 
-@onready var collect_particles = $GPUParticles3D
+
 @onready var dead_timer = $dead_timer
 @onready var sprite = $Sprite3D
+@onready var audio = $AudioStreamPlayer
 
 var id = 0
 var is_collected = false
@@ -18,14 +19,19 @@ func _on_body_entered(body):
 	if !is_collected:
 		if body is PlayerController:
 			body.collect_collectable(id)
+			audio.play()
 			is_collected = true
-			collect_particles.emitting = true
 			dead_timer.start()
 			sprite.visible = false
 			if GameManager.minimap:
 				GameManager.minimap.remove_collectable(get_current_tile())
-			if GameManager.messages_manager:
-				GameManager.messages_manager.show_message("You collected an ingredient!", 2.0)
+				
+			if body.has_all_collectables():
+				if GameManager.messages_manager:
+					GameManager.messages_manager.show_message("RETURN TO COULDRON. COMPLETE THE RITUAL!", 2.0)
+			else:
+				if GameManager.messages_manager:
+					GameManager.messages_manager.show_message("You collected an ingredient!", 2.0)
 			
 			
 func get_current_tile():
@@ -40,8 +46,6 @@ func _physics_process(delta):
 			if GameManager.minimap:
 				GameManager.minimap.player_seen_collectable(get_current_tile())
 				is_seen = true
-				
-							
 				
 				
 func can_see_player():

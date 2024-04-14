@@ -1,15 +1,20 @@
-res://ui_systems
+C:/Users/Magnu/Dropbox/Game Development/Godot Projects/Godot 4 Projects/DungeonSummoner/entities
+C:/Users/Magnu/Dropbox/Game Development/Godot Projects/Godot 4 Projects/DungeonSummoner/dungeon_generator
 res://screens/game_screen
 res://player_controller
-res://entities/couldron
-res://entities/collectable_bonedust
+res://ui_systems
 res://entities/collectable_tomato
 res://entities/collectable_tongue
-res://ui_systems/assets
-res://entities
+res://entities/collectable_bonedust
 res://entities/flame_enemy
-res://singletons
+res://entities
+C:/Users/Magnu/Dropbox/Game Development/Godot Projects/Godot 4 Projects/DungeonSummoner/player_controller
+res://entities/water_enemy
+res://screens/end_scene
 res://screens/main_menu_screen
+res://entities/couldron
+res://ui_systems/assets
+res://singletons
 res://dungeon_generator
 res://player_controller/systems
 res://player_controller/assets/shaders

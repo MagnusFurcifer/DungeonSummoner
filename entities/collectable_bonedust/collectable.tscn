@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://4h7fiy5sabtt"]
+[gd_scene load_steps=7 format=3 uid="uid://4h7fiy5sabtt"]
 
 [ext_resource type="Script" path="res://entities/collectable_bonedust/collectable.gd" id="1_i3aud"]
-[ext_resource type="Texture2D" uid="uid://b4jd81gk5362o" path="res://entities/collectable_tomato/collectable_tomato.png" id="2_urso2"]
+[ext_resource type="Texture2D" uid="uid://bg0yp867s385e" path="res://entities/collectable_bonedust/game_sprite.png" id="2_72u2n"]
+[ext_resource type="AudioStream" uid="uid://6njyvj56pdce" path="res://assets/sfx/pickup.wav" id="3_8xil0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_803p7"]
 size = Vector3(1, 2, 1)
@@ -27,7 +28,7 @@ shape = SubResource("BoxShape3D_803p7")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 billboard = 2
-texture = ExtResource("2_urso2")
+texture = ExtResource("2_72u2n")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 emitting = false
@@ -41,5 +42,8 @@ draw_pass_1 = SubResource("QuadMesh_2elcr")
 
 [node name="dead_timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8xil0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
