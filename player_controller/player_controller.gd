@@ -13,6 +13,11 @@ var visited_cells = []
 
 var current_hp = 10
 var max_hp = 10
+var collectables_status = [
+	false, 
+	false, 
+	false
+]
 
 
 signal updated_visited_tiles
@@ -47,6 +52,17 @@ func _input(event):
 			systems.movement.input(event)
 			systems.cam.input(event)
 		
+		
+		
+func has_all_collectables():
+	var has_all = true
+	for i in collectables_status:
+		if !i:
+			has_all = false
+	return has_all
+		
+func collect_collectable(id):
+	collectables_status[id] = true
 
 func hit(dmg):
 	print("HIT PLAYER")

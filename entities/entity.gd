@@ -57,9 +57,9 @@ func get_player_dir():
 func is_player_adjacent():
 	if GameManager.player:
 		var ec = get_current_tile()
-		print("Entitiy Tile: " + str(ec))
+		#print("Entitiy Tile: " + str(ec))
 		var pc = GameManager.player.get_current_tile()
-		print("Player Tile: " + str(pc))
+		#print("Player Tile: " + str(pc))
 		var x_diff = abs(pc.x-ec.x)
 		var y_diff = abs(pc.y-ec.y)
 		if x_diff <= 1 and y_diff <= 1:

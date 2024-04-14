@@ -36,7 +36,7 @@ func activate():
 		print(res)
 		if res:
 			if res is Entity:
-				res.hit(5)
+				res.hit(11)
 	
 func init(pos, delay, cards_manager, is_card_delay_active):
 	if is_card_delay_active: 

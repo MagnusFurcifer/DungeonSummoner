@@ -82,11 +82,16 @@ func process_in_game_movement(_delta, player_controller):
 		PlayerStates.PLAYER_STATES.MOVING:
 			if !move_tween_active:
 				var collision_test = is_colliding(player_controller, queued_action)
+				
 				if collision_test:
 					var move_tween = get_tree().create_tween()
 					move_tween.tween_property(player_controller, "global_position", player_controller.global_position + (queued_action.move_diff * bounce_coe), move_tween_duration)
 					move_tween.tween_callback(self._on_bounce_tween_finished.bind(player_controller, player_controller.global_position))
 					move_tween_active = true
+					
+					if collision_test.is_in_group("interactable"):
+						collision_test.activate()
+					
 				else:
 					var move_tween = get_tree().create_tween()
 					move_tween.tween_property(player_controller, "global_position", player_controller.global_position + queued_action.move_diff, move_tween_duration)
@@ -279,6 +284,6 @@ func update_visited_tiles(player_controller, tile):
 			exists = true
 	if !exists:
 		visited_tiles.append(map_pos)
-	player_controller.emit_signal("updated_visited_tiles")
+	player_controller.emit_signal("updated_visited_tiles", map_pos)
 	
 

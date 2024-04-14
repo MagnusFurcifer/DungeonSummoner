@@ -19,26 +19,26 @@ func _on_action_timer_finished():
 	if current_state in [STATES.IDLE, STATES.ACTING]:
 		#print("ACTION TIMER TIMEOUT")
 		if is_player_adjacent():
-			print("PLAYER is ADJACENT")
+			#print("PLAYER is ADJACENT")
 			attack_player()
 		else:
 			var res = search_for_player()
-			print(res)
+			#print(res)
 			if res:
-				print("FOUND PLAYER IN RAY")
+				#print("FOUND PLAYER IN RAY")
 				if res.collider is PlayerController:
 					if !is_player_adjacent():
 						move_towards_player()
 			
 			
 func attack_player():
-	print("ATTACK PLAYER")
+	#print("ATTACK PLAYER")
 	anim.play("attack")
 	if GameManager.player:
 		GameManager.player.hit(1)
 			
 func move_towards_player():
-	print("MOVING TOWARDS PLAYER")
+	#print("MOVING TOWARDS PLAYER")
 	var target_dir = get_player_dir()
 	var tgt_pos = Vector3(target_dir.x, 0, target_dir.y)
 	self.global_position += tgt_pos

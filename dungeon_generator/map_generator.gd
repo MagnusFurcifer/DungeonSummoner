@@ -18,6 +18,7 @@ var max_entity_tries = 20
 
 
 var spawn = Vector2(0, 0)
+var couldron = Vector2(0, 0)
 
 var entities = []
 
@@ -38,7 +39,8 @@ func init_level(size, fill_tile_id):
 			x_row.append(
 				{ "type" : fill_tile_id, 
 				"player_spawn" : false,
-				"entities" : []})
+				"entities" : [],
+				"collectable" : null})
 		level.append(x_row)
 		
 	
@@ -70,8 +72,28 @@ func generate_level(size: Vector2):
 	
 	populate_entities(size)
 	
+	populate_collectables()
 	
 	
+	
+	
+func populate_collectables():
+	print("populate_collectables in room: " + str(rooms[1]))
+	add_collectable_to_room(rooms[1], 0)
+	add_collectable_to_room(rooms[2], 1)
+	add_collectable_to_room(rooms[3], 2)
+	
+	
+	
+func add_collectable_to_room(room, id):
+	var x = room['x'] + (randi() % room['w'])
+	var y = room['y']  + (randi() % room['h'])
+	print("Adding collectable to: " + str(Vector2(y, x)))
+	var tmp = level[x][y]
+	tmp.collectable = id
+	tmp.type = DungeonGenerator.CELL_TYPES.BLANK_ROOM
+	tmp.entities = []
+	level[x][y] = tmp
 	
 func populate_entities(size):
 	var num = randi_range(min_entities, max_entities)
@@ -97,7 +119,8 @@ func cull_occluded_walls():
 					(level[x][y-1]['type'] == tmp_wall) &&
 					(level[x][y+1]['type'] == tmp_wall)):
 						level[x][y] = { "type" : DungeonGenerator.CELL_TYPES.BLANK, 
-						'entities' : [] ,  'player_spawn' : false}
+						'entities' : [] ,  'player_spawn' : false,
+						"collectable" : null}
 	
 
 func generation_attempt(tries, size):
@@ -130,6 +153,10 @@ func generation_attempt(tries, size):
 				create_room(room_def, 0)
 				spawn.x = room_def['x'] + floor( room_def['w'] / 2 )
 				spawn.y = room_def['y'] + floor( room_def['h'] / 2 )
+				couldron.x = room_def['x'] + floor(room_def['w'] / 2 - 1)
+				couldron.y = room_def['y'] + floor(room_def['h'] / 2 - 1)
+				
+				
 			else:
 				create_room(room_def, 1)
 				var prev_x = rooms[num_rooms-1]['x'] + floor( rooms[num_rooms-1]['w'] / 2 )
@@ -150,7 +177,8 @@ func create_room(room, type):
 		for y in range(room['y'], room['y'] + room['h']):
 			level[x][y] = { "type" : DungeonGenerator.CELL_TYPES.BLANK_ROOM, 
 								'entities' : [] , 
-								'player_spawn' : false}
+								'player_spawn' : false,
+								"collectable" : null}
 			
 	
 					
@@ -167,11 +195,13 @@ func createHorTunnel(x1, x2, z):
 	for x in range(xmin, xmax): 
 		level[x][z] = { "type" : DungeonGenerator.CELL_TYPES.BLANK_HALL, 
 								'entities' : [] , 
-								'player_spawn' : false}
+								'player_spawn' : false,
+								"collectable" : null}
 func createVirTunnel(z1, z2, x):
 	var zmin = floor(min(z1, z2))
 	var zmax = floor(max(z1, z2) + 1)
 	for z in range(zmin, zmax): 
 		level[x][z] = { "type" : DungeonGenerator.CELL_TYPES.BLANK_HALL, 
 								'entities' : [] , 
-								'player_spawn' : false}
+								'player_spawn' : false,
+								"collectable" : null}

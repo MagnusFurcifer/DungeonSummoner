@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://ct73y6w8aouvm"]
+
+[ext_resource type="Script" path="res://entities/collectable_tongue/collectable.gd" id="1_m5uct"]
+[ext_resource type="Texture2D" uid="uid://b4jd81gk5362o" path="res://entities/collectable_tomato/collectable_tomato.png" id="2_eqeh3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_803p7"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mbti1"]
+inherit_velocity_ratio = 0.422
+spread = 180.0
+initial_velocity_min = 168.68
+initial_velocity_max = 385.54
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_2elcr"]
+size = Vector2(0.25, 0.25)
+
+[node name="collectable" type="Area3D"]
+collision_layer = 3
+collision_mask = 2
+script = ExtResource("1_m5uct")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_803p7")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+billboard = 2
+texture = ExtResource("2_eqeh3")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 64
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_mbti1")
+draw_pass_1 = SubResource("QuadMesh_2elcr")
+
+[node name="dead_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,7 +1,7 @@
 extends Node
 class_name DungeonGenerator
 
-const MAP_SIZE = Vector2(32, 32)
+const MAP_SIZE = Vector2(16, 16)
 
 enum CELL_TYPES {
 	BLANK,
@@ -34,6 +34,10 @@ func get_player_spawn():
 	return map.spawn
 	
 	
+func get_couldron_spawn():
+	return map.couldron
+	
+	
 func generate_meshes():
 	print("Generate Meshes")
 	var mb = MeshBuilder.new()
@@ -61,9 +65,14 @@ func generate_meshes():
 	meshes.append(mb.generate_object(block_arrays, true))
 	meshes.append(mb.generate_floors_and_roofs(Vector2(map.get_map().size(), map.get_map()[0].size()), mat_man.materials[0]))
 	print("Generate Meshes Finished")
-	
+	print("DROPING COULDRON")
+	var tmp = EntityManager.get_couldron_scene().instantiate()
+	var tmp_pos = map.couldron * MeshBuilder.tileSize
+	tmp.global_position = Vector3(tmp_pos.x, 0, tmp_pos.y)
+	entities.append(tmp)
 	
 func instanite_entities(cell, y, x):
+	#print("Instantiate entities")
 	if cell.entities:
 		if cell.entities.size() > 0:
 			for entity_id in cell.entities:
@@ -71,3 +80,11 @@ func instanite_entities(cell, y, x):
 				var tmp_pos = Vector2(y, x) * MeshBuilder.tileSize
 				tmp.global_position = Vector3(tmp_pos.x, 0.5, tmp_pos.y)
 				entities.append(tmp)
+				
+	if cell.collectable != null:
+		print("COLLECTABLE FOUND, ADDING TO CELL AT: " + str(Vector2(y, x)))
+		var tmp = EntityManager.get_collectable(cell.collectable).instantiate()
+		var tmp_pos = Vector2(y, x) * MeshBuilder.tileSize
+		tmp.global_position = Vector3(tmp_pos.x, 0, tmp_pos.y)
+		entities.append(tmp)
+		

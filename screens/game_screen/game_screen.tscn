@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8lu113aswpjl"]
+[gd_scene load_steps=8 format=3 uid="uid://c8lu113aswpjl"]
 
 [ext_resource type="Script" path="res://screens/game_screen/game_screen.gd" id="1_kutnb"]
 [ext_resource type="PackedScene" uid="uid://bx61c17kryit2" path="res://world_space/world_container.tscn" id="2_bdftc"]
 [ext_resource type="Script" path="res://screens/game_screen/cards.gd" id="3_kh0ix"]
 [ext_resource type="PackedScene" uid="uid://jc2jjmorlytc" path="res://ui_systems/intro_sting.tscn" id="4_v2mnk"]
 [ext_resource type="PackedScene" uid="uid://br8nlv6kte6ci" path="res://ui_systems/health_ui.tscn" id="5_u3fmg"]
+[ext_resource type="PackedScene" uid="uid://kurp2yktvsw1" path="res://ui_systems/minimap.tscn" id="6_6gols"]
+[ext_resource type="PackedScene" uid="uid://bsi707ij05be" path="res://ui_systems/messages.tscn" id="7_n4b31"]
 
 [node name="game_screen" type="Control"]
 layout_mode = 3
@@ -33,7 +35,6 @@ rotation = -0.211756
 [node name="card_2" type="Node2D" parent="cards"]
 position = Vector2(91, 4)
 rotation = 0.163614
-scale = Vector2(1, 1)
 
 [node name="discard" type="Node2D" parent="cards"]
 
@@ -49,6 +50,12 @@ wait_time = 0.5
 one_shot = true
 
 [node name="health_ui" parent="." instance=ExtResource("5_u3fmg")]
+layout_mode = 1
+
+[node name="minimap" parent="." instance=ExtResource("6_6gols")]
+layout_mode = 1
+
+[node name="messages" parent="." instance=ExtResource("7_n4b31")]
 layout_mode = 1
 
 [connection signal="timeout" from="cards/card_use_delay" to="cards" method="_on_card_use_delay_timeout"]

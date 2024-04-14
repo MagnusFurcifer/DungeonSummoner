@@ -10,7 +10,8 @@ enum STATES {
 var current_state = STATES.INTRO
 
 var player = null
-
+var minimap = null
+var messages_manager = null
 
 func set_state(state):
 	current_state = state

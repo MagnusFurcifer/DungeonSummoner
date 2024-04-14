@@ -37,3 +37,17 @@ res://entities/entity.gd
 res://entities/enemy.gd
 res://ui_systems/health_ui.tscn
 res://ui_systems/health_ui.gd
+res://entities/collectable_tomato/collectable.tscn
+res://entities/collectable_tomato/collectable.gd
+res://entities/collectable_tomato/tomato.gd
+res://entities/collectable.gd
+res://ui_systems/minimap.tscn
+res://ui_systems/minimap.gd
+res://entities/collectable_tongue/collectable.tscn
+res://entities/collectable_tongue/collectable.gd
+res://entities/collectable_bonedust/collectable.tscn
+res://entities/collectable_bonedust/collectable.gd
+res://entities/couldron/couldron.tscn
+res://entities/couldron/couldron.gd
+res://ui_systems/messages.tscn
+res://ui_systems/messages.gd
