@@ -1,7 +1,8 @@
+res://ui_systems
 res://entities/flame_enemy
+res://entities
 res://singletons
 res://screens/main_menu_screen
-res://ui_systems
 res://screens/game_screen
 res://dungeon_generator
 res://player_controller/systems

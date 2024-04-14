@@ -9,6 +9,9 @@ enum STATES {
 
 var current_state = STATES.INTRO
 
+var player = null
+
+
 func set_state(state):
 	current_state = state
 	

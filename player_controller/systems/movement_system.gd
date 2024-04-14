@@ -4,7 +4,6 @@ class_name MovementSystem
 
 ####Nodes
 @onready var movement_ray = $movement_ray
-@onready var wall_area_ray = $wall_area_ray
 @onready var footsteps = $footsteps_system
 
 
@@ -84,10 +83,10 @@ func process_in_game_movement(_delta, player_controller):
 			if !move_tween_active:
 				var collision_test = is_colliding(player_controller, queued_action)
 				if collision_test:
-						var move_tween = get_tree().create_tween()
-						move_tween.tween_property(player_controller, "global_position", player_controller.global_position + (queued_action.move_diff * bounce_coe), move_tween_duration)
-						move_tween.tween_callback(self._on_bounce_tween_finished.bind(player_controller, player_controller.global_position))
-						move_tween_active = true
+					var move_tween = get_tree().create_tween()
+					move_tween.tween_property(player_controller, "global_position", player_controller.global_position + (queued_action.move_diff * bounce_coe), move_tween_duration)
+					move_tween.tween_callback(self._on_bounce_tween_finished.bind(player_controller, player_controller.global_position))
+					move_tween_active = true
 				else:
 					var move_tween = get_tree().create_tween()
 					move_tween.tween_property(player_controller, "global_position", player_controller.global_position + queued_action.move_diff, move_tween_duration)
@@ -105,21 +104,7 @@ func process_in_game_movement(_delta, player_controller):
 				turn_tween.tween_callback(self._on_turn_tween_finished.bind(player_controller, queued_action.target_dir))
 				turn_tween_active = true
 			
-
-func is_entering_wall_area(player_controller, queued_action):
-	if current_dir == DIRS.UP:
-		wall_area_ray.target_position = queued_action.move_diff
-	if current_dir == DIRS.DOWN:
-		wall_area_ray.target_position = -queued_action.move_diff
-	if current_dir == DIRS.LEFT:
-		wall_area_ray.target_position = Vector3(-queued_action.move_diff.z, 0, queued_action.move_diff.x) 
-	if current_dir == DIRS.RIGHT:
-		wall_area_ray.target_position = Vector3(queued_action.move_diff.z, 0, -queued_action.move_diff.x) 
-	wall_area_ray.force_raycast_update()
-	if wall_area_ray.is_colliding():
-		return wall_area_ray.get_collider()
-	else:
-		return false			
+	
 			
 func is_colliding(player_controller, queued_action):
 	#print("CALLING IS COLLIDING")
@@ -147,13 +132,7 @@ func ext_move_player(dir):
 	
 func input_poll(player_controller):
 	var action = null
-	
-	
-	#HACK  - this is literally just so I can lock input from the 
-	#map screen in the game_screen UI layout because otherwise when you type
-	#notes onto the map screen, the character moves and it's weird
 	var enabled = true
-
 	if enabled:
 		if Input.is_action_pressed("move_forward"): action = "move_forward"
 		if Input.is_action_pressed("move_backward"): action = "move_backward"
@@ -165,8 +144,6 @@ func input_poll(player_controller):
 	return action
 	
 func process_action(action, player_controller):
-	#print("PROCESS ACTION")
-	#print(action)
 	var queued_action = {
 		"action" : ACTIONS.IDLE,
 		"move_vector" : null,
@@ -241,9 +218,8 @@ func process_action(action, player_controller):
 			queued_action.target_dir = DIRS.UP
 		elif current_dir == DIRS.RIGHT:
 			queued_action.target_dir = DIRS.DOWN
-
-	#print(queued_action)
-
+			
+			
 	return queued_action
 	
 	

@@ -9,27 +9,125 @@
 	"stages": [
 		{
 			"uuid": "07af81f5-bbfe-49da-a33b-a27d0f15fbe0",
-			"title": "Todo",
+			"title": "key features",
 			"tasks": [
-				"bfb98a72-2ef0-4a1f-8c38-cde7d28ab9d5"
+				"642e6fda-ffac-4718-a912-4c96a0cbf75b",
+				"b1b4129c-c859-432e-9add-32b94f0a6942",
+				"4f56ea5e-3cb3-499b-a8d6-937d2fcfdbeb",
+				"e54f4993-455e-4252-a188-8747ab7b891c",
+				"e2634d45-807f-42d9-9e27-bc906ce0bf17",
+				"03824ba4-cf0b-4695-8538-79b0f1c13861",
+				"75644289-7e93-4ee9-99d4-3ff08ef97c67"
 			]
 		},
 		{
 			"uuid": "5c498cd4-5206-42f4-9a18-464063276ac1",
-			"title": "Doing",
-			"tasks": []
+			"title": "Key Bugs",
+			"tasks": [
+				"9557627b-1cfe-4065-8069-475ea0f7732b",
+				"45720c0a-d706-4b25-b348-bbd86e6c05b5"
+			]
 		},
 		{
 			"uuid": "c97ca114-29d9-4ba8-a390-6aee213e0911",
-			"title": "Done",
-			"tasks": []
+			"title": "Polish",
+			"tasks": [
+				"8d14a09e-c944-4590-9c46-3d446f09bdc8",
+				"de7959a4-d86e-4717-b440-7036b3049eac",
+				"668a7f02-84f3-42c7-9e58-7bfc3dbb0e8e",
+				"ad863323-1d51-48b7-8c67-361945883fd1"
+			]
 		}
 	],
 	"tasks": [
 		{
-			"uuid": "bfb98a72-2ef0-4a1f-8c38-cde7d28ab9d5",
-			"title": "FootStep Sounds",
-			"description": "eJxjYpDRSJBkYD_js7uNAQjWMx61Y2DQYWBjZGX8X__fnsHIGCTcUH_GB5WeEYldPE0NQjOsYzcynsjA8IYl1Awi8j0TQrN8T4YwrgdBlXqmTvkCYlSlQQSuyIr8B9GzpNjBdKbYQV4QLQ91y38IlIe4gW4AAEP_NQI.\n",
+			"uuid": "9557627b-1cfe-4065-8069-475ea0f7732b",
+			"title": "Enemies moving into your square",
+			"description": "",
+			"category": "e103634f-e4e0-4e74-9016-3ec9b06cf29b",
+			"steps": []
+		},
+		{
+			"uuid": "45720c0a-d706-4b25-b348-bbd86e6c05b5",
+			"title": "level not generating properlly",
+			"description": "",
+			"category": "e103634f-e4e0-4e74-9016-3ec9b06cf29b",
+			"steps": []
+		},
+		{
+			"uuid": "642e6fda-ffac-4718-a912-4c96a0cbf75b",
+			"title": "1 more enemy at least",
+			"description": "",
+			"category": "e103634f-e4e0-4e74-9016-3ec9b06cf29b",
+			"steps": []
+		},
+		{
+			"uuid": "b1b4129c-c859-432e-9add-32b94f0a6942",
+			"title": "spider web",
+			"description": "",
+			"category": "e103634f-e4e0-4e74-9016-3ec9b06cf29b",
+			"steps": []
+		},
+		{
+			"uuid": "4f56ea5e-3cb3-499b-a8d6-937d2fcfdbeb",
+			"title": "ability to collect pickups (The 3 ingredients)",
+			"description": "",
+			"category": "e103634f-e4e0-4e74-9016-3ec9b06cf29b",
+			"steps": []
+		},
+		{
+			"uuid": "e54f4993-455e-4252-a188-8747ab7b891c",
+			"title": "THe couldron",
+			"description": "",
+			"category": "e103634f-e4e0-4e74-9016-3ec9b06cf29b",
+			"steps": []
+		},
+		{
+			"uuid": "e2634d45-807f-42d9-9e27-bc906ce0bf17",
+			"title": "intro scene and outro scene",
+			"description": "",
+			"category": "e103634f-e4e0-4e74-9016-3ec9b06cf29b",
+			"steps": []
+		},
+		{
+			"uuid": "8d14a09e-c944-4590-9c46-3d446f09bdc8",
+			"title": "enemy noise",
+			"description": "",
+			"category": "e103634f-e4e0-4e74-9016-3ec9b06cf29b",
+			"steps": []
+		},
+		{
+			"uuid": "de7959a4-d86e-4717-b440-7036b3049eac",
+			"title": "background music",
+			"description": "",
+			"category": "e103634f-e4e0-4e74-9016-3ec9b06cf29b",
+			"steps": []
+		},
+		{
+			"uuid": "668a7f02-84f3-42c7-9e58-7bfc3dbb0e8e",
+			"title": "voice acting",
+			"description": "",
+			"category": "e103634f-e4e0-4e74-9016-3ec9b06cf29b",
+			"steps": []
+		},
+		{
+			"uuid": "ad863323-1d51-48b7-8c67-361945883fd1",
+			"title": "additional enemies and animations",
+			"description": "",
+			"category": "e103634f-e4e0-4e74-9016-3ec9b06cf29b",
+			"steps": []
+		},
+		{
+			"uuid": "03824ba4-cf0b-4695-8538-79b0f1c13861",
+			"title": "animations for using cards",
+			"description": "",
+			"category": "e103634f-e4e0-4e74-9016-3ec9b06cf29b",
+			"steps": []
+		},
+		{
+			"uuid": "75644289-7e93-4ee9-99d4-3ff08ef97c67",
+			"title": "fairy heals you",
+			"description": "",
 			"category": "e103634f-e4e0-4e74-9016-3ec9b06cf29b",
 			"steps": []
 		}

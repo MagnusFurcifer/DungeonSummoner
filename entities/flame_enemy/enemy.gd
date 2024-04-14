@@ -1,2 +1,5 @@
-extends CharacterBody3D
+extends Enemy
+
+
+
 

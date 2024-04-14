@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8lu113aswpjl"]
+[gd_scene load_steps=6 format=3 uid="uid://c8lu113aswpjl"]
 
 [ext_resource type="Script" path="res://screens/game_screen/game_screen.gd" id="1_kutnb"]
 [ext_resource type="PackedScene" uid="uid://bx61c17kryit2" path="res://world_space/world_container.tscn" id="2_bdftc"]
 [ext_resource type="Script" path="res://screens/game_screen/cards.gd" id="3_kh0ix"]
 [ext_resource type="PackedScene" uid="uid://jc2jjmorlytc" path="res://ui_systems/intro_sting.tscn" id="4_v2mnk"]
+[ext_resource type="PackedScene" uid="uid://br8nlv6kte6ci" path="res://ui_systems/health_ui.tscn" id="5_u3fmg"]
 
 [node name="game_screen" type="Control"]
 layout_mode = 3
@@ -46,6 +47,9 @@ layout_mode = 1
 [node name="start_timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="health_ui" parent="." instance=ExtResource("5_u3fmg")]
+layout_mode = 1
 
 [connection signal="timeout" from="cards/card_use_delay" to="cards" method="_on_card_use_delay_timeout"]
 [connection signal="intro_finished" from="intro_sting" to="." method="_on_intro_sting_intro_finished"]

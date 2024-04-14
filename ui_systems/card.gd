@@ -31,6 +31,13 @@ func activate():
 	$card_control.visible = false
 	$card_control.queue_free()
 	
+	if GameManager.player:
+		var res = GameManager.player.is_entity_in_front_cell()
+		print(res)
+		if res:
+			if res is Entity:
+				res.hit(5)
+	
 func init(pos, delay, cards_manager, is_card_delay_active):
 	if is_card_delay_active: 
 		set_inactive()

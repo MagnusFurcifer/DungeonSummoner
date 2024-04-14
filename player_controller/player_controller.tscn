@@ -40,9 +40,8 @@ shader_parameter/vignette_opacity = 0.5
 shader = ExtResource("7_ms08p")
 shader_parameter/alpha_adj = 0.0
 
-[node name="player_controller" type="CharacterBody3D"]
-collision_layer = 7
-collision_mask = 3
+[node name="player" type="CharacterBody3D"]
+collision_layer = 2
 script = ExtResource("1_wbivu")
 
 [node name="action_sfx" type="Node" parent="."]
@@ -60,12 +59,7 @@ script = ExtResource("3_lvced")
 
 [node name="movement_ray" type="RayCast3D" parent="systems/movement"]
 target_position = Vector3(0, 0, 1.5)
-collision_mask = 11
-
-[node name="wall_area_ray" type="RayCast3D" parent="systems/movement"]
-target_position = Vector3(0, 0, 1.5)
-collide_with_areas = true
-collide_with_bodies = false
+collision_mask = 9
 
 [node name="footsteps_system" type="Node3D" parent="systems/movement"]
 visible = false

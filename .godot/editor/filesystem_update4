@@ -33,3 +33,7 @@ res://screens/main_menu_screen/main_menu_screen.tscn
 res://entities/flame_enemy/enemy.tscn
 res://entities/flame_enemy/enemy.gd
 res://singletons/EntityManager.gd
+res://entities/entity.gd
+res://entities/enemy.gd
+res://ui_systems/health_ui.tscn
+res://ui_systems/health_ui.gd

@@ -1,8 +1,9 @@
 extends Control
 
 @onready var world_container = $world_container
-
+@onready var cards_mananager = $cards
 var dunGen = DungeonGenerator.new()
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,6 +11,7 @@ func _ready():
 	GameManager.set_state(GameManager.STATES.INTRO)
 	dunGen.create_dungeon()
 	world_container.create_world(dunGen)
+	
 	$start_timer.start()
 	
 	

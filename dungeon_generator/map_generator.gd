@@ -5,10 +5,10 @@ class_name MapGenerator
 var level = []
 var rooms = []
 
-const ROOM_MAX_SIZE = 3
-const ROOM_MIN_SIZE = 1
+const ROOM_MAX_SIZE = 4
+const ROOM_MIN_SIZE = 2
 const MAX_ROOMS = 6
-const MIN_ROOMS = 3
+const MIN_ROOMS = 4
 const MAX_TRIES = 100
 var num_rooms = 0
 
@@ -29,7 +29,7 @@ func get_rooms():
 
 func _init():
 	randomize()
-
+	
 	
 func init_level(size, fill_tile_id):
 	for y in range(0, size.y):
@@ -66,6 +66,7 @@ func generate_level(size: Vector2):
 	#Set Spawn
 	level[spawn.x][spawn.y]['player_spawn'] = true 
 	
+	print(rooms)
 	
 	populate_entities(size)
 	
