@@ -22,12 +22,12 @@ func create_world(dunGen):
 	load_astar()
 	
 func load_astar():
-	astar_grid.region = Rect2i(0, 0, dunGen.MAP_SIZE, dunGen.MAP_SIZE)
+	astar_grid.region = Rect2i(0, 0, dunGen.MAP_SIZE.x, dunGen.MAP_SIZE.y)
 	astar_grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	astar_grid.update()
 	var map = dunGen.map.get_map()
-	for x in map:
-		for y in map[x]:
-			if y.type in [DungeonGenerator.CELL_TYPES.BRICK_WALL]:
+	for x in map.size():
+		for y in map[x].size():
+			if map[x][y].type in [DungeonGenerator.CELL_TYPES.BRICK_WALL]:
 				astar_grid.set_point_solid(Vector2(x, y))
 	

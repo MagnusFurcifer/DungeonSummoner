@@ -12,4 +12,7 @@ func _process(delta):
 
 
 func _on_button_pressed():
-	get_tree().change_scene_to_file("res://screens/game_screen/game_screen.tscn")
+	$main_menu.visible = false
+	$intro_cut_scene.visible = true
+	$intro_cut_scene.start()
+

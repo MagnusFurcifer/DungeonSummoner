@@ -14,6 +14,7 @@ func _ready():
 	world_container.create_world(dunGen)
 	minimap.setup(dunGen)
 	$start_timer.start()
+	$AudioStreamPlayer.play()
 	
 	
 func _on_intro_sting_intro_finished():

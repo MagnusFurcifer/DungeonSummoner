@@ -25,10 +25,24 @@ var player_spawn = Vector2(0, 0)
 @export var min_rooms_num : int = 3
 @export var max_rooms_num : int = 6
 
+
+var max_tries = 10
+var tries = 0
+
 func create_dungeon():
-	map.generate_level(MAP_SIZE)
-	generate_meshes()
+	var success = false
+	while tries < max_tries || !success: 
+		map.generate_level(MAP_SIZE)
+		generate_meshes()
+		if test_map():
+			success = true
+			break
+		tries += 1
 	
+func test_map():
+	if meshes.size() > 1:
+		return true
+	return false
 	
 func get_player_spawn():
 	return map.spawn

@@ -30,12 +30,15 @@ func _on_action_timer_finished():
 			var res = search_for_player()
 			#print(res)
 			if res:
-				#print("FOUND PLAYER IN RAY")
+				
 				if res.collider is PlayerController:
+					print("FOUND PLAYER IN RAY")
 					var target_path = find_path_to_player()
 					if target_path:
+						print("FOUND TARGET PATH IN ASTAR")
 						target_path.pop_front()
 						if !is_player_adjacent():
+							print("PLAYER NOT ADJACENT")
 							move_towards_player(target_path)
 			
 			
@@ -52,13 +55,27 @@ func attack_player():
 		GameManager.player.hit(1)
 			
 func move_towards_player(target_path):
-	print("MOVING TOWARDS PLAYER")
-	var target_dir = get_player_dir()
-	
-	var tgt_pos = Vector3(target_dir.x, 0, target_dir.y)
-	self.global_position += tgt_pos
-		
-		
+	var next_step = target_path.pop_front()
+	if next_step:
+		var target_tile = Vector3(next_step.x * PlayerController.CELL_SIZE, self.global_position.y, next_step.y * PlayerController.CELL_SIZE)
+		var res = cast_ray_forward(target_tile)
+		if !res:
+			print("MOVED TOWARDS PLAYER: " + str(target_tile))
+			self.global_position = target_tile
+			
+func cast_ray_forward(target_tile):
+	self.collision_layer = 0b0000
+	var ray_start = self.global_position
+	var ray_end = target_tile
+	var world3d : World3D = get_world_3d()
+	var space_state = world3d.direct_space_state
+	if space_state == null:
+		return null
+	var query = PhysicsRayQueryParameters3D.create(ray_start, ray_end, 0b1)
+	var tmp = space_state.intersect_ray(query)
+	self.collision_layer = 0b1011
+	return tmp
+			
 func search_for_player():
 	if GameManager.player:
 		self.collision_layer = 0b0000

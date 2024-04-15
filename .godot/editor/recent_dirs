@@ -1,22 +1,24 @@
-C:/Users/Magnu/Dropbox/Game Development/Godot Projects/Godot 4 Projects/DungeonSummoner/entities
+C:/Users/Magnu/Dropbox/Game Development/Godot Projects/Godot 4 Projects/DungeonSummoner/export/windows
+C:/Users/Magnu/Dropbox/Game Development/Godot Projects/Godot 4 Projects/DungeonSummoner/export
 C:/Users/Magnu/Dropbox/Game Development/Godot Projects/Godot 4 Projects/DungeonSummoner/dungeon_generator
+res://assets/cut_scenes
+res://screens/end_scene
+C:/Users/Magnu/Dropbox/Game Development/Godot Projects/Godot 4 Projects/DungeonSummoner/singletons
+res://screens/main_menu_screen
+res://entities/flame_enemy
+C:/Users/Magnu/Dropbox/Game Development/Godot Projects/Godot 4 Projects/DungeonSummoner/entities
 res://screens/game_screen
 res://player_controller
 res://ui_systems
 res://entities/collectable_tomato
 res://entities/collectable_tongue
 res://entities/collectable_bonedust
-res://entities/flame_enemy
 res://entities
 C:/Users/Magnu/Dropbox/Game Development/Godot Projects/Godot 4 Projects/DungeonSummoner/player_controller
 res://entities/water_enemy
-res://screens/end_scene
-res://screens/main_menu_screen
 res://entities/couldron
 res://ui_systems/assets
 res://singletons
 res://dungeon_generator
 res://player_controller/systems
 res://player_controller/assets/shaders
-res://world_space/world
-res://world_space

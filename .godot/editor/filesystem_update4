@@ -30,3 +30,8 @@ res://ui_systems/card.tscn
 res://world_space/world/world.tscn
 res://world_space/world/world.gd
 res://singletons/GameManager.gd
+res://world_space/world_container.tscn
+res://screens/main_menu_screen/main_menu_screen.tscn
+res://screens/main_menu_screen/intro_cut_scene.gd
+res://screens/main_menu_screen/main_menu_screen.gd
+res://screens/end_scene/end_screen.gd

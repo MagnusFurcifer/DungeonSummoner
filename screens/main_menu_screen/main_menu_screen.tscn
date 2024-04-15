@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://jwx11fwlmjtd"]
+[gd_scene load_steps=7 format=3 uid="uid://jwx11fwlmjtd"]
 
 [ext_resource type="Script" path="res://screens/main_menu_screen/main_menu_screen.gd" id="1_nlql1"]
 [ext_resource type="FontFile" uid="uid://c5yyu0axuj3vo" path="res://assets/fonts/Jersey20-Regular.ttf" id="1_paig5"]
 [ext_resource type="FontFile" uid="uid://bm17vguwia5j3" path="res://assets/fonts/VT323-Regular.ttf" id="2_86g4g"]
+[ext_resource type="Script" path="res://screens/main_menu_screen/intro_cut_scene.gd" id="2_uridj"]
+[ext_resource type="Texture2D" uid="uid://cq44u3yk0ao7t" path="res://assets/cut_scenes/intro.png" id="3_635sf"]
+[ext_resource type="AudioStream" uid="uid://bxhlq8uqwd5mc" path="res://assets/sfx/talk.wav" id="5_alsnr"]
 
 [node name="main_menu_screen" type="Control"]
 layout_mode = 3
@@ -26,6 +29,66 @@ color = Color(0, 0, 0, 1)
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("2_uridj")
+
+[node name="TextureRect" type="TextureRect" parent="intro_cut_scene"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_635sf")
+
+[node name="ColorRect" type="ColorRect" parent="intro_cut_scene/TextureRect"]
+custom_minimum_size = Vector2(620, 200)
+layout_mode = 0
+offset_left = -19.0
+offset_top = 299.0
+offset_right = 661.0
+offset_bottom = 499.0
+color = Color(0, 0, 0, 0.694118)
+
+[node name="Label" type="Label" parent="intro_cut_scene/TextureRect/ColorRect"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 0
+offset_left = 40.0
+offset_top = 12.0
+offset_right = 640.0
+offset_bottom = 412.0
+theme_override_colors/font_color = Color(0.231373, 0.564706, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("1_paig5")
+theme_override_font_sizes/font_size = 24
+text = "For your final test at summoner school, you must go into the dungeon and find the ingredients required to summon the dread demon fluffy.
+"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="intro_cut_scene/TextureRect/ColorRect"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 0
+offset_left = 41.0
+offset_top = 111.0
+offset_right = 641.0
+offset_bottom = 511.0
+theme_override_colors/font_color = Color(0.231373, 0.564706, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("1_paig5")
+theme_override_font_sizes/font_size = 24
+text = "Be careful of the flame and water demons, summon their opposite elements to defeat them!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Timer" type="Timer" parent="intro_cut_scene"]
+wait_time = 4.0
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="intro_cut_scene"]
+wait_time = 4.0
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="intro_cut_scene"]
+stream = ExtResource("5_alsnr")
 
 [node name="main_menu" type="Control" parent="."]
 layout_mode = 1
@@ -66,4 +129,6 @@ theme_override_fonts/font = ExtResource("2_86g4g")
 theme_override_font_sizes/font_size = 32
 text = "PLAY"
 
+[connection signal="timeout" from="intro_cut_scene/Timer" to="intro_cut_scene" method="_on_timer_timeout"]
+[connection signal="timeout" from="intro_cut_scene/Timer2" to="intro_cut_scene" method="_on_timer_2_timeout"]
 [connection signal="pressed" from="main_menu/VBoxContainer/MarginContainer2/Button" to="." method="_on_button_pressed"]

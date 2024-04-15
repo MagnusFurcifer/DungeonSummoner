@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8lu113aswpjl"]
+[gd_scene load_steps=10 format=3 uid="uid://c8lu113aswpjl"]
 
 [ext_resource type="Script" path="res://screens/game_screen/game_screen.gd" id="1_kutnb"]
 [ext_resource type="PackedScene" uid="uid://bx61c17kryit2" path="res://world_space/world_container.tscn" id="2_bdftc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://kurp2yktvsw1" path="res://ui_systems/minimap.tscn" id="6_6gols"]
 [ext_resource type="PackedScene" uid="uid://bsi707ij05be" path="res://ui_systems/messages.tscn" id="7_n4b31"]
 [ext_resource type="PackedScene" uid="uid://dolo45jjkrgjc" path="res://ui_systems/inventory.tscn" id="8_qnmmi"]
+[ext_resource type="AudioStream" uid="uid://cuhxl6meik4ro" path="res://assets/bgm/bgm_drum_drone.wav" id="9_ws485"]
 
 [node name="game_screen" type="Control"]
 layout_mode = 3
@@ -60,6 +61,9 @@ layout_mode = 1
 
 [node name="inventory" parent="." instance=ExtResource("8_qnmmi")]
 layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ws485")
 
 [connection signal="timeout" from="cards/card_use_delay" to="cards" method="_on_card_use_delay_timeout"]
 [connection signal="intro_finished" from="intro_sting" to="." method="_on_intro_sting_intro_finished"]

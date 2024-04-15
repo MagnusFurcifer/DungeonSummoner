@@ -11,6 +11,22 @@ var cards = [
 		"color" : Color.RED
 	},
 	{
+		"image" : preload("res://assets/cards/flame_demon.png"),
+		"title" : "Flame Demon",
+		"description" : "Summon a Flame",
+		"card_type" : 0,
+		"damage_type" : 0,
+		"color" : Color.RED
+	},
+	{
+		"image" : preload("res://assets/cards/water_demon.png"),
+		"title" : "Water Demon",
+		"description" : "Summon Water",
+		"card_type" : 0,
+		"damage_type" : 1,
+		"color" : Color.BLUE
+	},
+	{
 		"image" : preload("res://assets/cards/water_demon.png"),
 		"title" : "Water Demon",
 		"description" : "Summon Water",
